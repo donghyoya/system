@@ -7,7 +7,7 @@ FILENAME=$1
 BASENAME=$(basename "$FILENAME" .c)
 
 # 컴파일
-gcc "$FILENAME" -o "$BASENAME"
+gcc "$FILENAME" -o "$BASENAME" -lpcap
 
 # 실행 파일이 성공적으로 생성되었는지 확인
 if [ -f "./$BASENAME" ]; then

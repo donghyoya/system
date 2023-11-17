@@ -6,7 +6,9 @@
 
 int main(){
     pcap_if_t *alldevs;
+    pcap_if_t *d;
     pcap_if_t *device;
+    int i = 0;
 
     char errbuf[PCAP_ERRBUF_SIZE];
     int status = pcap_findalldevs(&alldevs, errbuf);
@@ -20,8 +22,8 @@ int main(){
         printf("%s\n", errbuf);
     }
 
-    for(d=alldevs; d; d=d -> next){
-        printf("%p : %d %s",d, ++i, d->name);
+    for(d = alldevs; d; d=d -> next){
+        printf("%p : %d %s", d, ++i, d->name);
         if(d->description) printf(" (%s)", d->description);
         printf("\n");
     }
