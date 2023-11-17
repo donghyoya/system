@@ -18,8 +18,15 @@ int main(){
 
     device = alldevs;
 
-    if(device == NULL){
-        fprintf(stderr, "Couldn't open device %s: %s\n",device->name, errbuf);
+    if (device == NULL) {
+        printf("No devices found.\n");
+        return 1;
+    }
+
+    handle = pcap_open_live(device->name, BUFSIZ, 1, 1000, errbuf);
+    
+    if (handle == NULL) {
+        fprintf(stderr, "Couldn't open device %s: %s\n", device->name, errbuf);
         return 1;
     }
 
