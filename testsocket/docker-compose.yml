@@ -1,0 +1,15 @@
+version: '3'
+services:
+  tcp_server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "8081:8081"
+
+  tcp_client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    depends_on:
+      - tcp_server
