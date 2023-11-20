@@ -6,6 +6,7 @@
 #include <arpa/inet.h>
 #include <errno.h>
 
+#define SERVER_IP "172.20.0.2"
 #define PORT 8081
 
 int main(){
@@ -27,7 +28,7 @@ int main(){
         serv_addr.sin_port = htons(PORT);
 
         // 서버 IP 주소 설정
-        if(inet_pton(AF_INET, "tcp_server", &serv_addr.sin_addr) <= 0){
+        if(inet_pton(AF_INET, SERVER_IP, &serv_addr.sin_addr) <= 0){
             printf("\n Invalid address / address not supported \n");
             return -1;
         }
@@ -36,7 +37,7 @@ int main(){
         if(connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0){
             printf("\nConnection Failed. Error: %s\n", strerror(errno));
             close(sock);
-            sleep(1);
+            sleep(2);
             continue;
         }
 
