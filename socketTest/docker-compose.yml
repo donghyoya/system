@@ -13,7 +13,7 @@ services:
   tcp_client:
     build:
       context: .
-      dockerfile: Dockerfile.tcp_client
+      dockerfile: Dockerfile.client
     networks:
       custom_network:
         ipv4_address: 172.20.0.3
