@@ -21,7 +21,7 @@ int main(){
 
     //서버 주소 설정
     serv_addr.sin_family = AF_INET;
-    serve_addr.sin_port = htons(PORT);
+    serv_addr.sin_port = htons(PORT);
 
     // 서버 IP 주소 설정
     if(inet_pton(AF_INET, "127.0.0.1", &serve_addr.sin_addr) <= 0){
