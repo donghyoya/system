@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  ubuntu1:
+    build: .
+    image: ubuntu_with_ping
+    networks:
+      - ubuntu_network
+
+  ubuntu2:
+    build: .
+    image: ubuntu_with_ping
+    networks:
+      - ubuntu_network
+
+networks:
+  ubuntu_network:
+    driver: bridge
