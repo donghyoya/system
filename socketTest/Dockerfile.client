@@ -1,5 +1,5 @@
 # 클라이언트용 Dockerfile
-FROM gcc:latest
+FROM gcc:11
 COPY tcp_client.c .
 RUN gcc -o tcp_client tcp_client.c
 CMD ["./tcp_client"]
