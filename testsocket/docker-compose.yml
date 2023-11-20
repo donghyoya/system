@@ -6,10 +6,20 @@ services:
       dockerfile: Dockerfile.server
     ports:
       - "8081:8081"
+    networks:
+      custom_network:
+        ipv4_address: 172.20.0.2
 
   tcp_client:
     build:
       context: .
-      dockerfile: Dockerfile.client
-    depends_on:
-      - tcp_server
+      dockerfile: Dockerfile.tcp_client
+    networks:
+      custom_network:
+        ipv4_address: 172.20.0.3
+
+networks:
+  custom_network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
