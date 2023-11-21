@@ -41,10 +41,14 @@ int main(){
         exit(EXIT_FAILURE);
     }
 
-    read(new_socket, buffer, 1024);
-    printf("Message from client: %s\n",buffer);
-    send(new_socket, message, strlen(message), 0);
-    printf("Hello message sent\n");
+    for(int i = 0; i< 10; ++i){
+        memset(buffer, 0 , 1024);
+        read(new_socket, buffer, 1024);
+        printf("Message from client: %s\n",buffer);
+        send(new_socket, message, strlen(message), 0);
+
+        sleep(1);
+    }
 
     close(server_fd);
 

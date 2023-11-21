@@ -42,13 +42,16 @@ int main(){
         }
 
         // 데이터 전송 및 응답 수신
-        send(sock, message, strlen(message), 0);
-        printf("Hello message sent\n");
-        read(sock, buffer, 1024);
-        printf("Message from server: %s\n", buffer);
+        for(int i = 0; i < 10; ++i){
+            send(sock, message, strlen(message), 0);
+            printf("Hello message sent\n");
+            read(sock, buffer, 1024);
+            printf("Message from server: %s\n", buffer);
+            
+            sleep(1);
+        }
 
         close(sock);
-        break;
     }
 
     return 0;
