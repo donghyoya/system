@@ -41,6 +41,29 @@ int main(){
         exit(EXIT_FAILURE);
     }
 
+    while(1){
+        if((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0){
+            perror("Accept");
+        }
+        continue;
+
+        while(1){
+            memset(buffer, 0, 1024);
+            int valread = read(new_socket, buffer, 1024);
+            if(valread == 0){
+                //클라이언트가 연결 닫음
+                printf("Client disconnected\n");
+                break;
+            }
+            printf("Message from client: %s\n", buffer);
+            send(new_socket, message, strlen(message), 0);
+        }
+
+        close(new_socket);
+    }
+
+
+    /*
     for(int i = 0; i< 10; ++i){
         memset(buffer, 0 , 1024);
         read(new_socket, buffer, 1024);
@@ -49,6 +72,7 @@ int main(){
 
         sleep(1);
     }
+    */
 
     close(server_fd);
 

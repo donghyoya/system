@@ -15,8 +15,12 @@ int main(){
     char *message = "Hello from client";
     char buffer[1024] = {0};
 
-    while(1){
+    int try = 0;
 
+    while(1){
+        if(try > 15){
+            break;
+        }
         //소켓 생성
         if((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0){
             printf("\n Socket creation error \n");
@@ -47,11 +51,13 @@ int main(){
             printf("Hello message sent\n");
             read(sock, buffer, 1024);
             printf("Message from server: %s\n", buffer);
-            
+
             sleep(1);
         }
 
         close(sock);
+
+        try++;
     }
 
     return 0;
