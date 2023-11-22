@@ -46,12 +46,18 @@ int main(){
         }
 
         // 데이터 전송 및 응답 수신
-        for(int i = 0; i < 10; ++i){
+        for (int i = 0; i < 10; ++i) {
             send(sock, message, strlen(message), 0);
             printf("Hello message sent\n");
-            read(sock, buffer, 1024);
+            
+            memset(buffer, 0, 1024);
+            int valread = read(sock, buffer, 1024);
+            if (valread == 0) {
+                // 서버가 연결을 닫았음
+                printf("Server disconnected\n");
+                break;
+            }
             printf("Message from server: %s\n", buffer);
-
             sleep(1);
         }
 
