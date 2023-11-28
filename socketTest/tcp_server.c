@@ -13,6 +13,8 @@ int main(){
     char buffer[1024] = {0};
     char *message = "hello from server";
 
+    printf("Start Running Server..");
+
     // 소켓 생성
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if(server_fd == 0){
@@ -44,9 +46,9 @@ int main(){
     while(1){
         if((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0){
             perror("Accept");
+            continue;
         }
-        continue;
-
+        
         while(1){
             memset(buffer, 0, 1024);
             int valread = read(new_socket, buffer, 1024);
