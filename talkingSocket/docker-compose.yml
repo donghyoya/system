@@ -1,0 +1,25 @@
+version: '3'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    networks:
+      - my_network
+
+  client1:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    networks:
+      - my_network
+
+  client2:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    networks:
+      - my_network
+
+networks:
+  my_network:

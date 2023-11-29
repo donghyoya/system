@@ -1,0 +1,6 @@
+# 서버용 Dockerfile
+FROM gcc:11
+COPY tcp_server.c .
+RUN gcc -o tcp_server tcp_server.c
+CMD [ "./tcp_server" ]
+
