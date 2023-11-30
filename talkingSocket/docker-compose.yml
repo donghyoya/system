@@ -5,7 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile.server
     networks:
-      - my_network
+      my_network:
+        ipv4_address: 172.20.0.2
 
   client1:
     build:
@@ -23,3 +24,6 @@ services:
 
 networks:
   my_network:
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
