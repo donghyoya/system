@@ -5,8 +5,8 @@
 #include <arpa/inet.h>
 #include <pthread.h>
 
-#define SERVER_IP "172.21.0.2"
-#define PORT 8081
+#define SERVER_IP "172.21.0.3"
+#define PORT 8082
 
 int sock;
 pthread_t receive_thread;
