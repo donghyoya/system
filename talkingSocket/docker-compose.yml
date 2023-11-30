@@ -4,9 +4,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.server
+    ports:
+      - "8082:8082"
     networks:
       my_network:
-        ipv4_address: 172.20.0.2
+        ipv4_address: 172.21.0.3
 
   client1:
     build:
