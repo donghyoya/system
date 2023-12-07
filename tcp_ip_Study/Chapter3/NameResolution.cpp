@@ -29,6 +29,7 @@ bool GetDomainName(struct in_addr addr, char *name, int namelen)
 		return false;
 	strncpy(name, ptr->h_name, namelen);
 	return true;
+    
 }
 
 int main(int argc, char *argv[])
