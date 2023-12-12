@@ -1,5 +1,5 @@
 # 서버용 Dockerfile
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 # 필요한 패키지 설치
 RUN apt-get update && apt-get install -y g++ && rm -rf /var/lib/apt/lists/*
