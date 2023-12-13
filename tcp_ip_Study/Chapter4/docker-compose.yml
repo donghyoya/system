@@ -5,21 +5,17 @@ services:
       context: .
       dockerfile: Dockerfile.server
     networks:
-      my_network:
+      chapter4:
         ipv4_address: 172.20.0.1
     ports:
       - "9000:9000"
 
-  client1:
-    build:
-      context: .
-      dockerfile: Dockerfile.client
-    networks:
-      my_network:
-        ipv4_address: 172.20.0.2
-
 networks:
-  my_network:
+  chapter4:
+    driver: bridge
     ipam:
+      driver: default
       config:
         - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
+
